@@ -21,7 +21,7 @@ const deployYourVotingContract: DeployFunction = async function (hre: HardhatRun
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  const ownerAddress = "0x0000000000000000000000000000000000000001";
+  const ownerAddress = "0x6F3ccCaAaDa2192f12486B113EaFcbFBaf049e4f";
 
   /// checkpoint 6 //////
   const verifierAddress = "0x0000000000000000000000000000000000000002"; // placeholder
@@ -33,20 +33,20 @@ const deployYourVotingContract: DeployFunction = async function (hre: HardhatRun
 
   /// checkpoint 2 //////
   const leanIMTAddress = "0x0000000000000000000000000000000000000003"; // placeholder
-  // const poseidon3 = await deploy("PoseidonT3", {
-  //   from: deployer,
-  //   log: true,
-  //   autoMine: true,
-  // });
+  const poseidon3 = await deploy("PoseidonT3", {
+     from: deployer,
+     log: true,
+     autoMine: true,
+  });
 
-  // const leanIMT = await deploy("LeanIMT", {
-  //   from: deployer,
-  //   log: true,
-  //   autoMine: true,
-  //   libraries: {
-  //     PoseidonT3: poseidon3.address,
-  //   },
-  // });
+  const leanIMT = await deploy("LeanIMT", {
+     from: deployer,
+     log: true,
+     autoMine: true,
+     libraries: {
+       PoseidonT3: poseidon3.address,
+     },
+  });
 
   await deploy("Voting", {
     from: deployer,
