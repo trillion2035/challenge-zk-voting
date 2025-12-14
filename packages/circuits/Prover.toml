@@ -1,0 +1,25 @@
+# Merkle tree depth (example: 20)
+depth = 16
+
+# Position of the leaf
+index = 0
+
+# Random private values (just placeholders for now)
+nullifier = 1
+nullifier_hash = "0x29176100eaa962bdc1fe6c654d6a3c130e96a4d1168b33848b897dc502820133"
+secret = 3
+
+# Merkle root (dummy for now)
+root = "0x2eaa00ff94aa542b726083d39a960fa6c3f79dded2d9bb24511ac009971ee7ed"
+
+# Merkle siblings — MUST match the depth
+# If depth = 20, this array MUST have 20 elements
+siblings = [
+  0, 0, 0, 0,
+  0, 0, 0, 0,
+  0, 0, 0, 0,
+  0, 0, 0, 0
+]
+
+# Vote value (usually 0 or 1)
+vote = true

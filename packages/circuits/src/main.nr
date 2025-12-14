@@ -9,6 +9,7 @@ fn main(
     // private inputs
     nullifier: Field,
     secret: Field,
+    
     ////// Checkpoint 4 //////
     // public inputs
     root: pub Field,
@@ -43,4 +44,21 @@ fn main(
     let vote_field = vote as Field;
     assert((vote_field * vote_field) == vote_field);
 
+}
+
+#[test]
+fn compute_root_for_dummy_inputs() {
+    let nullifier: Field = 1;
+    let secret: Field = 3;
+
+    let commitment: Field = hash_2([nullifier, secret]);
+
+    let siblings: [Field; 16] = [0; 16];
+    let siblings_num = 0;
+
+    let index: Field = 0;
+    let index_bits: [u1; 16] = index.to_le_bits();
+
+    let root: Field = binary_merkle_root(hash_2, commitment, siblings_num, index_bits, siblings);
+    println(root);
 }
